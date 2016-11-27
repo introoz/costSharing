@@ -1,0 +1,48 @@
+<p-dataTable [value]="costs" selectionMode="single" [(selection)]="selectedCost" (onRowSelect)="onRowSelect($event)" [paginator]="true"
+  rows="15" [responsive]="true">
+  <header>CRUD for Costs</header>
+  <p-column field="costId" header="Id" [sortable]="true"></p-column>
+  <p-column field="name" header="Name" [sortable]="true"></p-column>
+  <p-column field="creatorName" header="Creator Name" [sortable]="true"></p-column>
+  <p-column field="type" header="Type" [sortable]="true"></p-column>
+  <p-column field="amount" header="Amount" [sortable]="true"></p-column>
+  <p-column field="participantCount" header="No. of Participants" [sortable]="true"></p-column>
+  <footer>
+    <div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div>
+  </footer>
+</p-dataTable>
+
+<p-dialog header="Cost Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="cost">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="costId">Id</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="costId" [(ngModel)]="cost.costId" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="name">Name</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="cost.name" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="creatorName">Creator Name</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="creatorName" [(ngModel)]="cost.creatorName" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="type">Type</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="type" [(ngModel)]="cost.type" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="amount">Amount</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="amount" [(ngModel)]="cost.amount" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="participantCount">No. of Participants</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="participantCount" [(ngModel)]="cost.participantCount" /></div>
+    </div>
+  </div>
+  <footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+      <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+    </div>
+  </footer>
+</p-dialog>
