@@ -14,8 +14,8 @@ export class AppComponent {
 
   ngOnInit() {
     this.items = [
-      { label: 'Groups', icon: 'fa-users', url: 'groups' },
-      { label: 'Costs', icon: 'fa-money', url: 'cost_table' }
+      { label: 'Groups', icon: 'fa-users', routerLink: ['groups'] },
+      { label: 'Costs', icon: 'fa-money', routerLink: ['cost_table'] }
       // { label: 'Documentation', icon: 'fa-book' },
       // { label: 'Support', icon: 'fa-support' },
       // { label: 'Social', icon: 'fa-twitter' }

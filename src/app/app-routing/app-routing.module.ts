@@ -6,7 +6,7 @@ import { CostTableComponent }      from 'app/cost-table/cost-table.component';
 import { GroupsComponent } from 'app/groups/groups.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/groups', pathMatch: 'full' },
   { path: 'cost_table',  component: CostTableComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'groups', component: GroupsComponent }
