@@ -9,11 +9,13 @@ import { MenuModule, TabMenuModule} from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { CostTableComponent } from './cost-table/cost-table.component';
 import { AppRoutingModule } from 'app/app-routing/app-routing.module';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CostTableComponent       
+    CostTableComponent,
+    GroupsComponent       
   ],
   imports: [
     BrowserModule,
