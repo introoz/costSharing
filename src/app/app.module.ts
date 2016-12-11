@@ -8,10 +8,13 @@ import { MenuModule, TabMenuModule} from 'primeng/primeng';
 import { MessagesModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from 'app/home/home.component';
 import { CostTableComponent } from './cost-table/cost-table.component';
 import { AppRoutingModule } from 'app/app-routing/app-routing.module';
 import { GroupsComponent } from './groups/groups.component';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
+import { AuthenticationService } from 'app/_services/authentication.service';
+import { AuthGuard } from 'app/_guards/auth.guard';
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
@@ -20,6 +23,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CostTableComponent,
     GroupsComponent               
   ],
@@ -38,7 +42,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
     MessagesModule,
     AuthenticationModule
   ],
-  providers: [AUTH_PROVIDERS],
+  providers: [AUTH_PROVIDERS, AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

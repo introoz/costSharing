@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // import { DataTable } from 'primeng/primeng';
 // import { Dialog } from 'primeng/primeng';
 
-import { Cost } from 'app/Cost';
-import { CostService } from 'app/cost.service';
+import { Cost } from 'app/_models/Cost';
+import { CostService } from 'app/_services/cost.service';
 
 @Component({
   selector: 'app-cost-table',
@@ -27,7 +27,13 @@ export class CostTableComponent implements OnInit {
   constructor(private costService: CostService) { }
 
   ngOnInit() {
-    this.costService.getCosts().then(costs => this.costs = costs);
+    this.costService.getCosts()
+    .subscribe(costs => {
+        this.costs = costs;
+    });
+
+    // let x = this.costService.getCosts();
+    // this.costService.getCosts().then(costs => this.costs = costs);
   }
 
   showDialogToAdd() {

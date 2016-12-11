@@ -5,7 +5,10 @@
   <a routerLink="/groups" routerLinkActive="active">Groups</a>
   <a routerLink="/cost_table" routerLinkActive="active">Costs</a>
 </nav>-->
-<!--<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>-->
+<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
 
 <router-outlet></router-outlet>
+
+<button type="button" (click)="clicked()" routerLink="/login" >Logout</button>
+
 <!--<app-cost-table></app-cost-table>-->
