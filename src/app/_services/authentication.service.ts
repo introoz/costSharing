@@ -15,7 +15,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string): Observable<boolean> {        
-        var loginData = "username=" + username + "&password=" + password;
+        var loginData = "username=" + username + "&password=" + password;        
         return this.http.post(apiUrl+'/api/token', loginData, { headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }) })
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
@@ -24,10 +24,8 @@ export class AuthenticationService {
                     console.log('udalo sie service');
                     // set token property
                     this.token = token;
-
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
-
                     // return true to indicate successful login
                     return true;
                 } else {

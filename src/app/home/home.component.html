@@ -1,14 +1,10 @@
-<!--<h1>
-  {{title}}
-</h1>-->
-<!--<nav>
-  <a routerLink="/groups" routerLinkActive="active">Groups</a>
-  <a routerLink="/cost_table" routerLinkActive="active">Costs</a>
-</nav>-->
+
 <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
 
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
+<app-groups2></app-groups2>
+<br>
+<br>
+<br>
 
 <button type="button" (click)="clicked()" routerLink="/login" >Logout</button>
-
-<!--<app-cost-table></app-cost-table>-->
