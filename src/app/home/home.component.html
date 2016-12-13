@@ -1,10 +1,21 @@
-
-<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+<!--<p-tabMenu [model]="items" [activeItem]="activeItem">
+</p-tabMenu>-->
 
 <!--<router-outlet></router-outlet>-->
-<app-groups2></app-groups2>
+<div class="ui-grid ui-grid-responsive ui-fluid">
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+            <app-groups2></app-groups2>
+        </div>
+        <div class="ui-grid-col-6">
+            <app-members></app-members>
+        </div>
+    </div>
+</div>
+
+
 <br>
 <br>
 <br>
 
-<button type="button" (click)="clicked()" routerLink="/login" >Logout</button>
+<button type="button" (click)="clicked()" routerLink="/login">Logout</button>
