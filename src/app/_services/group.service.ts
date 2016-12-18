@@ -31,4 +31,21 @@ export class GroupService {
     return this.http.get(apiUrl + '/api/General/GetGroupsByUsername/' + user, options)
       .map((response: Response) => response.json());
   }
+
+  saveGroup(group: Group): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(apiUrl + '/api/General/SaveGroup/' + JSON.parse(localStorage.getItem('currentUser')).username, group, options)
+      .map((response: Response) => response.ok);
+  }
+
+  deleteGroup(groupId: number): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(apiUrl + '/api/General/DeleteGroup/' + groupId, options)
+      .map((response: Response) => response.ok);
+  }
+  // JSON.parse(localStorage.getItem('currentUser')).username
 }

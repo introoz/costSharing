@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from 'app/_services/authentication.service';
 import { apiUrl } from 'app/_models/const';
 
-import { Member } from 'app/_models/Member';
+import { Member } from 'app/_models/member';
 
 @Injectable()
 export class MemberService {
