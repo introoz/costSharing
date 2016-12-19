@@ -20,6 +20,7 @@ import { AuthGuard } from 'app/_guards/auth.guard';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { Groups2Component } from './groups2/groups2.component';
 import { MembersComponent } from './members/members.component';
+import { InstancesComponent } from './instances/instances.component';
 
 // import { LoginScreenComponent } from './login-screen/login-screen.component';
 
@@ -30,7 +31,8 @@ import { MembersComponent } from './members/members.component';
     CostTableComponent,
     GroupsComponent,
     Groups2Component,
-    MembersComponent               
+    MembersComponent,
+    InstancesComponent               
   ],
   imports: [
     BrowserModule,

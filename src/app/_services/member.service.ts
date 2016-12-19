@@ -24,4 +24,21 @@ export class MemberService {
     return this.http.get(apiUrl + '/api/General/GetMembersByGroupId/' + groupId, options)
       .map((response: Response) => response.json());
   }
+
+  newMember(member: Member): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(apiUrl + '/api/General/SaveMember/' /*+ JSON.parse(localStorage.getItem('currentUser')).username*/, member, options)
+      .map((response: Response) => response.ok);
+  }
+
+  deleteGroup(groupId: number): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(apiUrl + '/api/General/DeleteGroup/' + groupId, options)
+      .map((response: Response) => response.ok);
+  }
+
 }

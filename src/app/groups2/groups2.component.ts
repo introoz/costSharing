@@ -18,8 +18,6 @@ export class Groups2Component implements OnInit {
 
   displayDialog: boolean;
 
-  test;
-
   constructor(private groupService: GroupService) { }
 
   ngOnInit() {

@@ -1,0 +1,19 @@
+<p-dataTable [value]="members" scrollable="true" scrollHeight="100px">
+    <header *ngIf="currentGroup != null" >Instances of {{currentGroup.groupName}}</header>
+    <header *ngIf="currentGroup == null">Members</header>
+    <p-column header="Edit" styleClass="col-icon">
+      <!--<template pTemplate type="header">
+        <button type="button" pButton (click)="selectAllCars()" icon="fa-check"></button>
+    </template>-->
+    <template let-member="rowData" pTemplate type="body">
+        <button type="button" pButton (click)="selectMember(member)" icon="fa-search"></button>
+    </template>
+    </p-column>
+    <p-column header="Delete" styleClass="col-icon">
+    <template let-member="rowData" pTemplate type="body">
+        <button type="button" pButton (click)="deleteMember(member)" icon="fa-bin"></button>
+    </template>
+    </p-column>
+    <p-column field="name" header="Name" [filter]="true"></p-column>    
+</p-dataTable>
+<button type="button" (click)="addMember()">Add</button>
