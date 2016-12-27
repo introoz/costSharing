@@ -24,11 +24,11 @@ import { AuthGuard } from 'app/_guards/auth.guard';
 const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: 'cost_table', component: CostTableComponent },
-      { path: 'groups', component: GroupsComponent }
-    ]
+    canActivate: [AuthGuard]//,
+    // children: [
+    //   { path: 'cost_table', component: CostTableComponent },
+    //   { path: 'groups', component: GroupsComponent }
+    // ]
   },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
