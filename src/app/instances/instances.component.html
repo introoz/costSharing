@@ -1,6 +1,6 @@
-<p-dataTable [value]="members" scrollable="true" scrollHeight="100px">
+<p-dataTable [value]="instances" scrollable="true" scrollHeight="100px">
     <header *ngIf="currentGroup != null" >Instances of {{currentGroup.groupName}}</header>
-    <header *ngIf="currentGroup == null">Members</header>
+    <header *ngIf="currentGroup == null">Instances</header>
     <p-column header="Edit" styleClass="col-icon">
       <!--<template pTemplate type="header">
         <button type="button" pButton (click)="selectAllCars()" icon="fa-check"></button>

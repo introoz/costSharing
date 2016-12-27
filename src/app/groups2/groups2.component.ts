@@ -49,11 +49,6 @@ export class Groups2Component implements OnInit {
 
   choseGroup(group: Group) {
     this.myEvent.emit(group);
-    // this.memberService.getMembersByGroupId(group.groupId)
-    // .subscribe(members => {
-    //   this.members = members;
-    // })
-    // console.log(this.members);
   }
 
   onDialogHide() {

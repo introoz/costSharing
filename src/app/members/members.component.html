@@ -1,50 +1,69 @@
-<!--<p-dataScroller [value]="members" [rows]="10" [inline]="true" scrollHeight="500px">
-  <header>
-    Members
-  </header>
-  <div *ngFor="let member of members">
-    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5">
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-3" style="text-align:center"><i class="fa fa-search" style="cursor:pointer;float:left;margin-top:40px"></i>
-        </div>
-        <div class="ui-grid-col-9">
-          <div class="ui-grid ui-grid-responsive ui-fluid">
-            <div class="ui-grid-row" (click)="test()">
-              <div class="ui-grid-col-2">Name:</div>
-              <div class="ui-grid-col-10">{{member.name}}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</p-dataScroller>-->
-
-<!--<div class="ui-widget-header ui-helper-clearfix" style="padding:4px 10px;border-bottom: 0 none">
-    <i class="fa fa-search" style="float:left;margin:4px 4px 0 0"></i>
-    <input #gb type="text" pInputText size="30" style="float:left" placeholder="Global Filter">
-</div>-->
-<p-dataTable [value]="members" scrollable="true" scrollHeight="100px">
-    <header *ngIf="currentGroup != null" >Members of {{currentGroup.groupName}}</header>
-    <header *ngIf="currentGroup == null">Members</header>
-    <p-column header="Edit" styleClass="col-icon">
-      <!--<template pTemplate type="header">
-        <button type="button" pButton (click)="selectAllCars()" icon="fa-check"></button>
-    </template>-->
+<p-dataTable [value]="members" scrollable="true" scrollHeight="300px">
+  <header *ngIf="currentGroup != null">Members of {{currentGroup.groupName}}</header>
+  <header *ngIf="currentGroup == null">Members</header>
+  <!--<p-column header="Edit" styleClass="col-icon">
     <template let-member="rowData" pTemplate type="body">
-        <button type="button" pButton (click)="selectMember(member)" icon="fa-search"></button>
+      <button type="button" pButton (click)="selectMember(member)" icon="fa-search"></button>
     </template>
-    </p-column>
-    <p-column header="Delete" styleClass="col-icon">
+  </p-column>-->
+  <p-column header="Delete" styleClass="col-icon">
     <template let-member="rowData" pTemplate type="body">
-        <button type="button" pButton (click)="deleteMember(member)" icon="fa-bin"></button>
+      <button type="button" pButton (click)="deleteMember(member)" icon="fa-bin"></button>
     </template>
-    </p-column>
-    <p-column field="name" header="Name" [filter]="true"></p-column>    
+  </p-column>
+  <p-column field="name" header="Name" [filter]="true"></p-column>
 </p-dataTable>
 <button type="button" (click)="addMember()">Add</button>
+<button type="button" (click)="addMemberRegistered()">Add registered user</button>
 
 <p-dialog header="Member Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="225"
+  (onAfterHide)="onDialogHide()">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedMember" style="font-size:16px;text-align:center;padding:20px">
+<div class="ui-grid-row">
+  <div class="ui-grid-col-12" style="text-align:center"></div>
+</div>
+<div class="ui-grid-row">
+  <div class="ui-grid-col-4">Name: </div>
+  <input type="text" pInputText [(ngModel)]="selectedMember.name" />
+</div>
+<div class="ui-grid-row">
+  <button type="button" (click)="saveMember()">Save</button>
+</div>
+</div>
+</p-dialog>
+
+<p-dialog header="Adding registered user" [(visible)]="displayDialogRegistered" [responsive]="true" showEffect="fade" [modal]="true"
+  width="225">
+  <p-dataTable [value]="users">
+    <header>
+      Users able to connect
+    </header>
+
+    <p-column header="Add" styleClass="col-icon">
+      <template let-user="rowData" pTemplate type="body">
+        <button type="button" (click)="addRegisteredMember(user)" pButton icon="fa-plus"></button>
+      </template>
+    </p-column>
+    <p-column field="name" header="Name"></p-column>
+    <!--<template let-user>
+      <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5">
+<div class="ui-grid-row">
+  <div class="ui-grid-col-4">
+    <button type="button" pButton icon="fa-plus"></button>
+  </div>
+  <div class="ui-grid-col-4">Name:</div>
+  <div class="ui-grid-col-4">{{user.name}}</div>
+</div>
+</div>
+</template>-->
+  </p-dataTable>
+</p-dialog>
+
+
+
+
+
+<!--<p-dialog header="Member Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="225"
   (onAfterHide)="onDialogHide()">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedMember" style="font-size:16px;text-align:center;padding:20px">
 <div class="ui-grid-row">
@@ -58,4 +77,4 @@
   <button type="button" (click)="newMember()">Save</button>
 </div>
 </div>
-</p-dialog>
+</p-dialog>-->

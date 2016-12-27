@@ -33,12 +33,20 @@ export class MemberService {
       .map((response: Response) => response.ok);
   }
 
-  deleteGroup(groupId: number): Observable<boolean> {
+  deleteMember(memberId: number): Observable<boolean> {
     let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.get(apiUrl + '/api/General/DeleteGroup/' + groupId, options)
+    return this.http.get(apiUrl + '/api/General/DeleteMember/' + memberId, options)
       .map((response: Response) => response.ok);
   }
+
+  // deleteGroup(groupId: number): Observable<boolean> {
+  //   let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+  //   let options = new RequestOptions({ headers: headers });
+
+  //   return this.http.get(apiUrl + '/api/General/DeleteGroup/' + groupId, options)
+  //     .map((response: Response) => response.ok);
+  // }
 
 }
