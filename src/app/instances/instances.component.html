@@ -1,19 +1,34 @@
 <p-dataTable [value]="instances" scrollable="true" scrollHeight="100px">
     <header *ngIf="currentGroup != null" >Instances of {{currentGroup.groupName}}</header>
     <header *ngIf="currentGroup == null">Instances</header>
-    <p-column header="Edit" styleClass="col-icon">
-      <!--<template pTemplate type="header">
-        <button type="button" pButton (click)="selectAllCars()" icon="fa-check"></button>
-    </template>-->
-    <template let-member="rowData" pTemplate type="body">
-        <button type="button" pButton (click)="selectMember(member)" icon="fa-search"></button>
+    <p-column header="Select" styleClass="col-icon">
+    <template let-instance="rowData" pTemplate type="body">
+        <!--<button type="button" pButton (click)="selectInstance(instance)" icon="fa-search"></button>-->
+        <button type="button" pButton (click)="selectInstance(instance)" icon="fa-search"></button>
     </template>
     </p-column>
     <p-column header="Delete" styleClass="col-icon">
-    <template let-member="rowData" pTemplate type="body">
-        <button type="button" pButton (click)="deleteMember(member)" icon="fa-bin"></button>
+    <template let-instance="rowData" pTemplate type="body">
+        <button type="button" pButton (click)="deleteInstance(instance)" icon="fa-bin"></button>
     </template>
     </p-column>
     <p-column field="name" header="Name" [filter]="true"></p-column>    
 </p-dataTable>
-<button type="button" (click)="addMember()">Add</button>
+<button type="button" (click)="addInstance()">Add</button>
+
+
+<p-dialog header="Adding Instances" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="225"
+  (onAfterHide)="onDialogHide()">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedInstance" style="font-size:16px;text-align:center;padding:20px">
+<div class="ui-grid-row">
+  <div class="ui-grid-col-12" style="text-align:center"></div>
+</div>
+<div class="ui-grid-row">
+  <div class="ui-grid-col-4">Name: </div>
+  <input type="text" pInputText [(ngModel)]="selectedInstance.name" />
+</div>
+<div class="ui-grid-row">
+  <button type="button" (click)="saveInstance()">Save</button>
+</div>
+</div>
+</p-dialog>

@@ -52,8 +52,6 @@ export class MembersComponent implements OnInit {
       .subscribe(users => {
         this.users = users;
         this.displayDialogRegistered = true;
-        // console.log(users);
-        // console.log(this.users);
       });
   }
 

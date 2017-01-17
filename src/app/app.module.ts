@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/primeng';
 import { MenuModule, TabMenuModule} from 'primeng/primeng';
 import { MessagesModule } from 'primeng/primeng';
 import { DataScrollerModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from 'app/home/home.component';
@@ -21,6 +22,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { Groups2Component } from './groups2/groups2.component';
 import { MembersComponent } from './members/members.component';
 import { InstancesComponent } from './instances/instances.component';
+import { InstanceviewComponent } from './instanceview/instanceview.component';
 
 // import { LoginScreenComponent } from './login-screen/login-screen.component';
 
@@ -32,7 +34,8 @@ import { InstancesComponent } from './instances/instances.component';
     GroupsComponent,
     Groups2Component,
     MembersComponent,
-    InstancesComponent               
+    InstancesComponent,
+    InstanceviewComponent             
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { InstancesComponent } from './instances/instances.component';
     AppRoutingModule,
     MessagesModule,
     AuthenticationModule,
-    DataScrollerModule
+    DataScrollerModule,
+    DropdownModule
   ],
   providers: [AUTH_PROVIDERS, AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]

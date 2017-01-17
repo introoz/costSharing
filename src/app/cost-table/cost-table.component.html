@@ -14,30 +14,32 @@
 
 <p-dialog header="Cost Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="cost">
-    <div class="ui-grid-row">
+    <!--<div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="costId">Id</label></div>
       <div class="ui-grid-col-8"><input pInputText id="costId" [(ngModel)]="cost.costId" /></div>
-    </div>
+    </div>-->
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="name">Name</label></div>
       <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="cost.name" /></div>
     </div>
-    <div class="ui-grid-row">
+    <!--<div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="creatorName">Creator Name</label></div>
       <div class="ui-grid-col-8"><input pInputText id="creatorName" [(ngModel)]="cost.creatorName" /></div>
-    </div>
+    </div>-->
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="type">Type</label></div>
-      <div class="ui-grid-col-8"><input pInputText id="type" [(ngModel)]="cost.type" /></div>
+      <div class="ui-grid-col-8"><p-dropdown [style]="{'width':'150px'}" [options]="costTypesToSelect" [(ngModel)]="selectedCostType"></p-dropdown></div>
+      <!--[(ngModel)]="selectedCostType"-->
+        <!--<input pInputText id="type" [(ngModel)]="cost.type" /></div>-->
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="amount">Amount</label></div>
       <div class="ui-grid-col-8"><input pInputText id="amount" [(ngModel)]="cost.amount" /></div>
     </div>
-    <div class="ui-grid-row">
+    <!--<div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="participantCount">No. of Participants</label></div>
       <div class="ui-grid-col-8"><input pInputText id="participantCount" [(ngModel)]="cost.participantCount" /></div>
-    </div>
+    </div>-->
   </div>
   <footer>
     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">

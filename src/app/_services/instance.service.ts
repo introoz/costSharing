@@ -17,7 +17,7 @@ export class InstanceService {
     private authenticationService: AuthenticationService) { }
 
 
-  getMembersByGroupId(groupId: number): Observable<Instance[]> {
+  getInstancesByGroupId(groupId: number): Observable<Instance[]> {
     let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
     let options = new RequestOptions({ headers: headers });
 
@@ -25,20 +25,20 @@ export class InstanceService {
       .map((response: Response) => response.json());
   }
 
-  // newMember(member: Member): Observable<boolean> {
-  //   let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-  //   let options = new RequestOptions({ headers: headers });
+  newInstance(instance: Instance): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
 
-  //   return this.http.post(apiUrl + '/api/General/SaveMember/' /*+ JSON.parse(localStorage.getItem('currentUser')).username*/, member, options)
-  //     .map((response: Response) => response.ok);
-  // }
+    return this.http.post(apiUrl + '/api/General/SaveInstance/' /*+ JSON.parse(localStorage.getItem('currentUser')).username*/, instance, options)
+      .map((response: Response) => response.ok);
+  }
 
-  // deleteGroup(groupId: number): Observable<boolean> {
-  //   let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-  //   let options = new RequestOptions({ headers: headers });
+  deleteInstance(instanceId: number): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
 
-  //   return this.http.get(apiUrl + '/api/General/DeleteGroup/' + groupId, options)
-  //     .map((response: Response) => response.ok);
-  //}
+    return this.http.get(apiUrl + '/api/General/DeleteInstance/' + instanceId, options)
+      .map((response: Response) => response.ok);
+  }
 
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { InstanceService } from 'app/_services/instance.service';
 import { Instance } from 'app/_models/instance';
 import { Member } from 'app/_models/member';
 import { Group } from 'app/_models/group';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instances',
@@ -12,7 +13,7 @@ import { Group } from 'app/_models/group';
 })
 export class InstancesComponent implements OnInit {
 
-  selectedMember: Member;
+  selectedInstance: Instance;
 
   displayDialog: boolean;
 
@@ -20,7 +21,7 @@ export class InstancesComponent implements OnInit {
 
   instances: Instance[];
 
-  constructor(private instanceService: InstanceService) {
+  constructor(private instanceService: InstanceService, private router: Router) {
     this.currentGroup = null;
   }
 
@@ -28,7 +29,7 @@ export class InstancesComponent implements OnInit {
   }
 
   groupChosen(group: Group) {
-    this.instanceService.getMembersByGroupId(group.groupId)
+    this.instanceService.getInstancesByGroupId(group.groupId)
       .subscribe(instances => {
         this.instances = instances;
       })
@@ -37,17 +38,32 @@ export class InstancesComponent implements OnInit {
     // console.log(this.members);
   }
 
-  selectMember(member: Member) {
-    this.selectedMember = member;
-    this.displayDialog = true;
+  addInstance() {
+    let instance = new Instance();
+    instance.groupId = this.currentGroup.groupId;
+    this.selectInstance(instance);
   }
 
-  deleteMember(member) {
-
-
+  saveInstance() {
+    this.instanceService.newInstance(this.selectedInstance)
+      .subscribe(x => console.log('saveMember result:' + x));
   }
+
+  selectInstance(instance: Instance) {
+    // this.selectedInstance = instance;
+    // this.displayDialog = true;
+
+    console.log('weszlo do selectInstance');
+    this.router.navigate(['/instanceview', instance.instanceId]);
+  }
+
+  deleteInstance(instance: Instance) {
+    this.instanceService.deleteInstance(instance.instanceId)
+      .subscribe(x => console.log('deleteMember Result' + x));
+  }
+
   onDialogHide() {
-    this.selectedMember = null;
+    this.selectedInstance = null;
   }
 
 }

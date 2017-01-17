@@ -28,6 +28,35 @@ export class CostService {
       .map((response: Response) => response.json());
   }
 
+  GetCostByInstanceId(instanceId: number): Observable<Cost[]> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    //get users from api
+    return this.http.get(apiUrl + '/api/General/GetCostByInstanceId/' + instanceId + '/' + currentUser.username, options)
+      .map((response: Response) => response.json());
+  }
+
+  saveCost(cost: Cost): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    let options = new RequestOptions({ headers: headers });
+
+    console.log('a tu?');
+    return this.http.post(apiUrl + '/api/General/SaveCost/' + JSON.parse(localStorage.getItem('currentUser')).username, cost, options)
+      .map((response: Response) => response.ok);
+  }
+
+  // updateCosts(costs: Cost[]){
+  //   console.log('updateCosts');
+  //   this.costs.
+  //   this.costs = costs;
+  // }
+
+  // getDownloadedCosts(): Promise<Cost[]> {
+  //   console.log('getDownloadedCosts');
+  //   return Promise.resolve(this.costs);
+  // }
   // getCosts() {
   //   return this.http.get(apiUrl+'/api/Costs')
   //     .subscribe(
