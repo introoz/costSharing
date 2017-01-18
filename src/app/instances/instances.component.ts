@@ -41,7 +41,10 @@ export class InstancesComponent implements OnInit {
   addInstance() {
     let instance = new Instance();
     instance.groupId = this.currentGroup.groupId;
-    this.selectInstance(instance);
+    //this.selectInstance(instance);
+
+    this.selectedInstance = instance;
+    this.displayDialog = true;
   }
 
   saveInstance() {
