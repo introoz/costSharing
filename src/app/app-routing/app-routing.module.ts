@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from 'app/app.component';
 import { HomeComponent } from 'app/home/home.component';
+import { ParticipantsComponent } from 'app/participants/participants.component';
 import { CostTableComponent } from 'app/cost-table/cost-table.component';
 import { GroupsComponent } from 'app/groups/groups.component';
 import { RegistrationComponent } from 'app/registration/registration.component';
@@ -25,6 +26,10 @@ import { AuthGuard } from 'app/_guards/auth.guard';
 const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'participants', component: ParticipantsComponent,
     canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },

@@ -23,6 +23,8 @@ import { Groups2Component } from './groups2/groups2.component';
 import { MembersComponent } from './members/members.component';
 import { InstancesComponent } from './instances/instances.component';
 import { InstanceviewComponent } from './instanceview/instanceview.component';
+import { SettlementsComponent } from './settlements/settlements.component';
+import { ParticipantsComponent } from './participants/participants.component';
 
 // import { LoginScreenComponent } from './login-screen/login-screen.component';
 
@@ -35,7 +37,9 @@ import { InstanceviewComponent } from './instanceview/instanceview.component';
     Groups2Component,
     MembersComponent,
     InstancesComponent,
-    InstanceviewComponent             
+    InstanceviewComponent,
+    SettlementsComponent,
+    ParticipantsComponent             
   ],
   imports: [
     BrowserModule,

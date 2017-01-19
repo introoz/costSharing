@@ -1,0 +1,7 @@
+<p-dataTable [value]="settlements" selectionMode="single" [(selection)]="selectedCost" (onRowSelect)="onRowSelect($event)" [paginator]="true"
+  rows="15" [responsive]="true">
+  <header>Settlements</header>
+  <p-column field="user1" header="User nr 1" [sortable]="true"></p-column>
+  <p-column field="moneyOwed" header="Money owed" [sortable]="true"></p-column>
+  <p-column field="user2" header="User nr 2" [sortable]="true"></p-column>
+</p-dataTable>

@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
               if(result === true) {
                 //login successful
                 console.log('udalo sie');
-                this.router.navigate(['/']);
+                this.router.navigate(['/home']);
               } else {
                 //login failed
                 console.log('nie udalo sie');

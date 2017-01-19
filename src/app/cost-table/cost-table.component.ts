@@ -65,7 +65,7 @@ export class CostTableComponent implements OnInit {
       this.costs[this.findSelectedCostIndex()] = this.cost;
 
     console.log(this.cost);
-    this.costService.saveCost(this.cost);
+    this.costService.saveCost(this.cost);    
 
     this.cost = null;
     this.displayDialog = false;

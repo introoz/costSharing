@@ -1,17 +1,11 @@
-<p-dataTable [value]="costs" selectionMode="single" [(selection)]="selectedCost" (onRowSelect)="onRowSelect($event)" [paginator]="true"
+<p-dataTable [value]="participants" selectionMode="single" [(selection)]="selectedCost" (onRowSelect)="onRowSelect($event)" [paginator]="true"
   rows="15" [responsive]="true">
-  <header>CRUD for Costs</header>
-  <p-column field="costId" header="Id" [sortable]="true"></p-column>
-  <p-column field="name" header="Name" [sortable]="true"></p-column>
-  <p-column field="creatorName" header="Creator Name" [sortable]="true"></p-column>
-  <p-column field="type" header="Type" [sortable]="true"></p-column>
-  <p-column field="amount" header="Amount" [sortable]="true"></p-column>
-  <p-column field="participantCount" header="No. of Participants" [sortable]="true"></p-column>
-  <p-column field="participants" header="Participants" [sortable]="true">
-    <template pTemplate="header">
-        <button type="button" pButton routerLink="/participants" icon="fa-plus"></button>
-    </template>
-  </p-column>
+  <header>CRUD for Participants</header>
+  <p-column field="designId" header="Id" [sortable]="true"></p-column>
+  <p-column field="member" header="Member" [sortable]="true"></p-column>
+  <p-column field="paid" header="Paid amount" [sortable]="true"></p-column>
+  <p-column field="wholeAmount" header="Whole amount" [sortable]="true"></p-column>
+
   <footer>
     <div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div>
   </footer>

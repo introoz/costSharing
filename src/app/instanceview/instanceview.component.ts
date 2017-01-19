@@ -18,8 +18,8 @@ import 'rxjs/add/operator/switchMap';
 export class InstanceviewComponent implements OnInit {
   // @Output() instanceChosenEvent = new EventEmitter();
 
-private costs: Cost[];
-private instanceId: number;
+  private costs: Cost[];
+  private instanceId: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,12 +31,18 @@ private instanceId: number;
     // console.log('instanceview');
     // var id: number;
     this.route.params
-      .switchMap((params: Params) => { this.instanceId = (+params['id']); var x = this.costService.GetCostByInstanceId(+params['id']); return x;})
-      .subscribe((costs: Cost[]) => this.costs = costs);
+      .switchMap((params: Params) => { this.instanceId = (+params['id']); var x = this.costService.GetCostByInstanceId(+params['id']); return x; })
+      .subscribe((costs: Cost[]) => {
+        this.costs = costs;
+        //udawane
+        if (costs.length > 0) {
+          costs[0].participantCount = 2;
+        }
+      });
 
     // this.costTypeService.getCostTypes(id)
     // .subscribe((costTypes: CostType[]) => this.costTypes = costTypes);    
-    
+
     // this.instanceChosenEvent.emit(this.route.params['id']);
     // this.route.params
     //   .switchMap((params: Params) => this.service.getHero(+params['id']))
